@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form @submit.prevent="save" v-loader="loading">
+        <form @submit.prevent="save" v-loading="loading">
             <button class="btn" type="submit">Submit form</button>
         </form>
     </div>
@@ -48,9 +48,9 @@
              position: absolute;
              border-radius: 100%;
              right: 6px;
-             top: 50%;
-             width: 0;
-             height: 0;
+             top: calc(50% - 5px);
+             width: 10px;
+             height: 10px;
              border: 2px solid rgba(255, 255, 255, 0.5);
              border-left-color: #fff;
              border-top-color: #fff;
