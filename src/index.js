@@ -4,9 +4,11 @@ const options = {
 
 const bindEventToForm = function (form) {
     form.addEventListener('submit', () => {
-        const submit = form.querySelector('[type="submit"]');
-        submit.classList.add(options.loadingClass);
-        submit.disabled = true;
+        const submits = form.querySelectorAll('[type="submit"]');
+        submits.forEach((submit) => {
+            submit.classList.add(options.loadingClass);
+            submit.disabled = true;
+        });
     });
 };
 
