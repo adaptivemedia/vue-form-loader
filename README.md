@@ -25,7 +25,7 @@ Import the directive and use it:
 
 ```javascript
 // Eg. in app.js
-import FormLoader  from "vue-form-loader";
+import FormLoader  from 'vue-form-loader';
 Vue.use(FormLoader);
 ```
 
@@ -72,6 +72,11 @@ You need to create the css for button loader yourself. When a form submits,
 the class `is-loading` will be added to the submit button (must be of `type="submit").
 
 To change which class the directive adds/removes:, set `FormLoader.loadingClass` in your `app.js`
+
+### Disabling
+On form submission, the submit button(s) will be `disabled` to prevent erroneous double submissions. 
+Buttons with the `name` attribute will however not be disabled since that would prevent them from 
+being included in the request. To make sure they are disabled, use css and target the loading class instead.
 
 ### Testing
 

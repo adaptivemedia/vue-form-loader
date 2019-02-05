@@ -108,7 +108,9 @@ return /******/ (function(modules) { // webpackBootstrap
             var submits = form.querySelectorAll('[type="submit"]');
             submits.forEach(function (submit) {
                 submit.classList.add(options.loadingClass);
-                submit.disabled = true;
+                if (!submit.hasAttribute('name')) {
+                    submit.disabled = true;
+                }
             });
         });
     };

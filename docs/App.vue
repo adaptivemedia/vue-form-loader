@@ -3,6 +3,7 @@
         <form @submit.prevent="save" v-loading="loading">
             <button class="btn" type="submit">Submit form</button>
             <button class="btn" type="submit">Second Submit button</button>
+            <button class="btn" type="submit" name="publish">Submit button with name</button>
         </form>
     </div>
 </template>

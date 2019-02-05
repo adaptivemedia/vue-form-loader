@@ -7,7 +7,9 @@ const bindEventToForm = function (form) {
         const submits = form.querySelectorAll('[type="submit"]');
         submits.forEach((submit) => {
             submit.classList.add(options.loadingClass);
-            submit.disabled = true;
+            if (! submit.hasAttribute('name')) {
+                submit.disabled = true;
+            }
         });
     });
 };
