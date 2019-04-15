@@ -4,8 +4,7 @@ const options = {
 
 const bindEventToForm = function (form) {
     form.addEventListener('submit', () => {
-        const submits = form.querySelectorAll('[type="submit"]');
-        submits.forEach((submit) => {
+        Array.from(form.querySelectorAll('[type="submit"]')).forEach(submit => {
             submit.classList.add(options.loadingClass);
             if (! submit.hasAttribute('name')) {
                 submit.disabled = true;
