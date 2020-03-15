@@ -2,13 +2,22 @@ const options = {
     loadingClass: 'is-loading'
 };
 
+const addLoaderToSubmit = function (submit) {
+    submit.classList.add(options.loadingClass);
+    if (! submit.hasAttribute('name')) {
+        submit.disabled = true;
+    }
+};
+
+const removeLoaderFromSubmit = function (submit) {
+    submit.classList.remove(options.loadingClass);
+    submit.disabled = false;
+};
+
 const bindEventToForm = function (form) {
     form.addEventListener('submit', () => {
         Array.from(form.querySelectorAll('[type="submit"]')).forEach(submit => {
-            submit.classList.add(options.loadingClass);
-            if (! submit.hasAttribute('name')) {
-                submit.disabled = true;
-            }
+            addLoaderToSubmit(submit);
         });
     });
 };
@@ -20,14 +29,13 @@ const FormLoaderDirective = {
     },
     // Usage: <form v-loading="model">
     update: function (form, binding) {
-        const submit = form.querySelector('[type="submit"]');
-        if (binding.value) {
-            submit.classList.add(options.loadingClass);
-            submit.disabled = true;
-        } else {
-            submit.classList.remove(options.loadingClass);
-            submit.disabled = false;
-        }
+        Array.from(form.querySelectorAll('[type="submit"]')).forEach(submit => {
+            if (binding.value) {
+                addLoaderToSubmit(submit);
+            } else {
+                removeLoaderFromSubmit(submit);
+            }
+        });
     },
 };
 
