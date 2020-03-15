@@ -5,5 +5,8 @@ Vue.use(FormLoader);
 
 new Vue({
     el: '#app',
-    render: h => h(App)
+    render: h => h(App),
+    mounted() {
+        FormLoader.autoBindToForms();
+    }
 });

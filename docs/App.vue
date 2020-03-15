@@ -1,10 +1,21 @@
 <template>
-    <div>
-        <form @submit.prevent="save" v-loading="loading">
-            <button class="btn" type="submit">Submit form</button>
-            <button class="btn" type="submit">Second Submit button</button>
-            <button class="btn" type="submit" name="publish">Submit button with name</button>
-        </form>
+    <div class="root">
+        <div>
+            <section>
+                <h2>Form with v-loading</h2>
+                <form @submit.prevent="save" v-loading="loading">
+                    <button class="btn" type="submit">Submit form</button>
+                    <button class="btn" type="submit">Second Submit button</button>
+                    <button class="btn" type="submit" name="publish">Submit button with name</button>
+                </form>
+            </section>
+            <section>
+                <h2>Form without v-loading (will reload page)</h2>
+                <form>
+                    <button class="btn" type="submit">Submit form</button>
+                </form>
+            </section>
+        </div>
     </div>
 </template>
 
@@ -27,12 +38,17 @@
 
 <style lang="scss" scoped>
 
-    div {
+    .root {
+        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 100vh;
     }
+
+    section {
+        margin-bottom: 32px;
+    }
+
     .btn {
         padding: 16px 48px;
         background: #c9c9c9;
@@ -40,23 +56,24 @@
         font-size: 16px;
         cursor: pointer;
     }
+
     .is-loading {
         position: relative;
         transition: padding-right 0.3s ease-out;
         pointer-events: none;
 
         &::after {
-             content: "";
-             position: absolute;
-             border-radius: 100%;
-             right: 6px;
-             top: calc(50% - 5px);
-             width: 10px;
-             height: 10px;
-             border: 2px solid rgba(255, 255, 255, 0.5);
-             border-left-color: #fff;
-             border-top-color: #fff;
-             animation: spin 0.6s infinite linear, grow 0.3s forwards ease-out;
+            content: "";
+            position: absolute;
+            border-radius: 100%;
+            right: 6px;
+            top: calc(50% - 5px);
+            width: 10px;
+            height: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-left-color: #fff;
+            border-top-color: #fff;
+            animation: spin 0.6s infinite linear, grow 0.3s forwards ease-out;
         }
     }
 
