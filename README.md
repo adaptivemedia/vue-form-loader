@@ -78,11 +78,14 @@ On form submission, the submit button(s) will be `disabled` to prevent erroneous
 Buttons with the `name` attribute will however not be disabled since that would prevent them from 
 being included in the request. To make sure they are disabled, use css and target the loading class instead.
 
-### Testing
+### Developing
 
-```bash
-yarn test
-```
+`yarn start` will start the dev server to load the `docs/index.html` example file.
+
+### Publish a new release:
+- Build changes: `yarn build`
+- Bump version: `npm version major/minor/patch`
+- Publish: `npm publish` 
 
 ### Changelog
 
