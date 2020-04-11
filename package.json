@@ -1,6 +1,6 @@
 {
     "name": "vue-form-loader",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Directive which handles loading for when the form submits",
     "main": "dist/index.js",
     "scripts": {
