@@ -13,6 +13,7 @@
                 <h2>Form without v-loading (will reload page)</h2>
                 <form>
                     <button class="btn" type="submit">Submit form</button>
+                    <button class="btn" type="submit" name="exit">Submit form & exit</button>
                 </form>
             </section>
         </div>
@@ -55,6 +56,12 @@
         border: 1px solid #ccc;
         font-size: 16px;
         cursor: pointer;
+    }
+
+    .btn.is-disabled, .btn:disabled {
+        background: #d9d9d9;
+        pointer-events: none;
+        color: #000;
     }
 
     .is-loading {

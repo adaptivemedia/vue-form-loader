@@ -1,16 +1,26 @@
 const options = {
-    loadingClass: 'is-loading'
+    loadingClass: 'is-loading',
+    disabledClass: 'is-disabled',
 };
 
 const addLoaderToSubmit = function (submit) {
-    submit.classList.add(options.loadingClass);
-    if (! submit.hasAttribute('name')) {
+    // Only add a loading class to the clicked button
+    if (document.activeElement === submit) {
+        submit.classList.add(options.loadingClass);
+    }
+
+    // A submit button with a name cannot be disabled since
+    // then we can't check if the specific button was pressed server side
+    if (submit.hasAttribute('name')) {
+        submit.classList.add(options.disabledClass);
+    } else {
         submit.disabled = true;
     }
 };
 
 const removeLoaderFromSubmit = function (submit) {
     submit.classList.remove(options.loadingClass);
+    submit.classList.remove(options.disabledClass);
     submit.disabled = false;
 };
 
@@ -27,7 +37,7 @@ const FormLoaderDirective = {
     bind: function (form, binding) {
         bindEventToForm(form);
     },
-    // Usage: <form v-loading="model">
+    // Usage: <form v-loading="loading">
     update: function (form, binding) {
         Array.from(form.querySelectorAll('[type="submit"]')).forEach(submit => {
             if (binding.value) {
@@ -55,6 +65,9 @@ const FormLoader = {
     },
     set loadingClass(value) {
         options.loadingClass = value;
+    },
+    set disabledClass(value) {
+        options.disabledClass = value;
     }
 };
 
