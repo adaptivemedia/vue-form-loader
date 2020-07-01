@@ -3,9 +3,11 @@ const options = {
     disabledClass: 'is-disabled',
 };
 
-const addLoaderToSubmit = function (submit) {
-    // Only add a loading class to the clicked button
-    if (document.activeElement === submit) {
+const addLoaderToSubmit = function (submit, onlyOneSubmit) {
+    // Only add a loading class to the clicked button unless it's just one
+    // button. This enabled the loading class to be added to a form with
+    // only one button if the user pressed enter when in a text input
+    if (onlyOneSubmit || document.activeElement === submit) {
         submit.classList.add(options.loadingClass);
     }
 
@@ -26,8 +28,10 @@ const removeLoaderFromSubmit = function (submit) {
 
 const bindEventToForm = function (form) {
     form.addEventListener('submit', () => {
-        Array.from(form.querySelectorAll('[type="submit"]')).forEach(submit => {
-            addLoaderToSubmit(submit);
+        const submits = form.querySelectorAll('[type="submit"]');
+        const onlyOneSubmit = submits.length <= 1;
+        Array.from(submits).forEach(submit => {
+            addLoaderToSubmit(submit, onlyOneSubmit);
         });
     });
 };

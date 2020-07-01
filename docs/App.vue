@@ -12,8 +12,16 @@
             <section>
                 <h2>Form without v-loading (will reload page)</h2>
                 <form>
+                    <input type="text" name="email" placeholder="Enter email">
                     <button class="btn" type="submit">Submit form</button>
                     <button class="btn" type="submit" name="exit">Submit form & exit</button>
+                </form>
+            </section>
+            <section>
+                <h2>Form with enter press (will reload page)</h2>
+                <form>
+                    <input type="text" name="email" placeholder="Enter email">
+                    <button class="btn" type="submit">Submit form</button>
                 </form>
             </section>
         </div>
@@ -48,6 +56,13 @@
 
     section {
         margin-bottom: 32px;
+    }
+
+    input[type=text] {
+        padding: 16px;
+        background: #fff;
+        border: 1px solid #ccc;
+        font-size: 16px;
     }
 
     .btn {
